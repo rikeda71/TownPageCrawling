@@ -27,7 +27,8 @@ def all_crowling(category: str=""):
     """
 
     with open("prefectures.txt", "r") as f:
-        prefectures = f.readline().split("\n")
+        prefectures = f.read().split("\n")[:-1]
+
     # 都道府県ごとにスクレイピング
     for pref in tqdm(prefectures):
         print(pref)
@@ -46,7 +47,7 @@ def crowling_to_prefecture(baseurl: str="", pref_dir: str=""):
     """
 
     # 都道府県のindexは0~9 * 10 + 1~5 で決まっている
-    for i in tqdm(range(0, 10)):
+    for i in range(0, 10):
         for j in range(1, 6):
             k = 1
             idx = i * 10 + j
