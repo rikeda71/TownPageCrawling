@@ -1,22 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
-import os
 import time
 from random import random
 from tqdm import tqdm
 import pdb
-
-
-def make_dir(path: str=""):
-    """
-    ディレクトリを作成
-    例外処理によって既にディレクトリがあっても処理が終わらない
-    path : 作成したいディレクトリのパス
-    """
-    try:
-        os.mkdir(path)
-    except:
-        print(path + " already exists")
+from makedir import make_dir
 
 
 def all_crowling(category: str=""):
