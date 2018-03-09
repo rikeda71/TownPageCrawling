@@ -20,10 +20,25 @@ def makeshoplist(directory: str=""):
     shoplist = [name for filename in glob.glob(directory + "/*") for name in get_shoplist_pref(filename)]
     # 単一出現かつソートを行う
     shoplist = sorted(list(set(shoplist)))
+    # 〇〇店のような重複を削除する
+    distance = -1
+    for i in range(1, len(shoplist)):
+        if shoplist[distance] in shoplist[i] and\
+                ((len(shoplist[i]) - len(shoplist[distance])) > 2 or
+                 shoplist[i][-1] == "店"):
+            shoplist[i] = " "
+        elif shoplist[i - 1] in shoplist[i] and\
+                ((len(shoplist[i]) - len(shoplist[i - 1])) > 2 or
+                 shoplist[i][-1] == "店"):
+            shoplist[i] = " "
+            distance = i - 1
+        else:
+            distance = -1
+
     # 保存
     savename = directory[:directory.find("_")] + "_shops.txt"
     with open(savename, "w") as f:
-        f.write("\n".join(shoplist))
+        f.write("\n".join([shop for shop in shoplist if shop != " "]))
 
 
 def get_shoplist_pref(filedir: str=""):
