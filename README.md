@@ -17,8 +17,10 @@
 
     ```
     python crawling.py # 時間めっちゃかかります
+    python saveshopinfo.py
+    python makeshoplist.py
     ```
 
 ## その他
-* ここを読んで使う[https://itp.ne.jp/guide/web/notice/index.html](https://itp.ne.jp/guide/web/notice/index.html)
+* ここを読んで使う ->  [https://itp.ne.jp/guide/web/notice/index.html](https://itp.ne.jp/guide/web/notice/index.html)
 * crawling.py のUserAgentは変更可
